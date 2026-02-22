@@ -3167,3 +3167,23 @@ button:hover,
     margin: 0 0 1.5rem 0 !important;
   }
 }
+
+/* TheaterJS – blinking cursor */
+@keyframes theater-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+#theater-heading::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent);
+  font-weight: 300;
+  animation: theater-blink 0.9s step-start infinite;
+}
+
+#theater-heading.is-typing::after {
+  animation: none;
+  opacity: 1;
+}

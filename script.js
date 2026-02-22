@@ -618,7 +618,7 @@ var breakpoints=function(){"use strict";function e(e){t.init(e)}var t={list:null
 	// Stops animations/transitions until the page has ...
 
 		// ... loaded.
-			$window.on('load', function() {
+			window.addEventListener('load', function() {
 				window.setTimeout(function() {
 					$body.removeClass('is-preload');
 				}, 100);
@@ -865,4 +865,51 @@ window.addEventListener('load', function() {
       });
     }
   }, 150);
+});
+
+// TheaterJS – looping typing animation for the hero heading
+window.addEventListener('load', function() {
+  if (typeof theaterJS === 'undefined') return;
+
+  var el = document.getElementById('theater-heading');
+  if (!el) return;
+
+  var lines = [
+    "Hi, I'm Nandita.",
+    "I speak Python fluently. SQL occasionally.",
+    "Hi, I'm Nandita.",
+    "SELECT * FROM talent WHERE available = true;",
+    "Hi, I'm Nandita.",
+    "Bug hunter. The bug wins sometimes.",
+    "Hi, I'm Nandita.",
+    "Making data tell better stories since 2019.",
+    "Hi, I'm Nandita.",
+    "I turn chaotic spreadsheets into actual insights.",
+  ];
+
+  var index = 0;
+
+  var theater = theaterJS({ minSpeed: 55, maxSpeed: 160, locale: 'en' });
+
+  theater
+    .on('type:start, erase:start', function() {
+      el.classList.add('is-typing');
+    })
+    .on('type:end, erase:end', function() {
+      el.classList.remove('is-typing');
+    });
+
+  theater.addActor('heading', { speed: 0.88, accuracy: 1 }, '#theater-heading');
+
+  // TheaterJS passes a done() callback to every callback scene — it MUST
+  // be called to advance the chain. Without it the loop silently stops.
+  function nextLine(done) {
+    var text = lines[index % lines.length];
+    index++;
+    theater.addScene('heading:' + text, 3000, nextLine);
+    if (typeof done === 'function') done();
+  }
+
+  // Kick off with a 400ms delay, then hand control to nextLine
+  theater.addScene(400, nextLine);
 });
