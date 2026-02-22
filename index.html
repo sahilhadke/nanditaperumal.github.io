@@ -7,9 +7,8 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/modern.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o8htIUqZWdyOFTJTuxVGtvLI32ySpdPLYbToz3fEGj1Z1wQNpTRvaR7QjP+2pfVFOdOxMsoX0S4qL/7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body class="is-preload">
 
@@ -237,27 +236,9 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1vGK8cp4aR4sZyCPbP1fDXnBFHdO0oacgPsJw8cdY8zGuJQa8zcOsdX8VkJm5Qf/yyHg4e/R0MD3Y8IZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-			<script>
-				// Init AOS after page load so template's is-preload (which disables transitions) is removed first
-				window.addEventListener('load', function() {
-					setTimeout(function() {
-						if (typeof AOS !== 'undefined') {
-							AOS.init({
-								duration: 500,
-								offset: 40,
-								once: true,
-								easing: 'ease-out'
-							});
-						}
-					}, 150);
-				});
-			</script>
+			<script src="script.js"></script>
 
 	</body>
 </html>
