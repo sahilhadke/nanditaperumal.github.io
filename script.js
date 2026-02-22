@@ -913,3 +913,47 @@ window.addEventListener('load', function() {
   // Kick off with a 400ms delay, then hand control to nextLine
   theater.addScene(400, nextLine);
 });
+
+// ─── Cursor-interactive parallax background ───
+(function() {
+  var orbs = [
+    { el: document.querySelector('.orb-1'), speedX:  0.022, speedY:  0.018 },
+    { el: document.querySelector('.orb-2'), speedX: -0.030, speedY: -0.025 },
+    { el: document.querySelector('.orb-3'), speedX:  0.048, speedY:  0.040 },
+    { el: document.querySelector('.orb-4'), speedX: -0.018, speedY:  0.035 },
+    { el: document.querySelector('.orb-5'), speedX:  0.035, speedY: -0.028 },
+  ].filter(function(o) { return !!o.el; });
+
+  if (!orbs.length) return;
+
+  var targetX = 0, targetY = 0;
+  var currentX = 0, currentY = 0;
+  var cx = window.innerWidth / 2;
+  var cy = window.innerHeight / 2;
+
+  document.addEventListener('mousemove', function(e) {
+    targetX = e.clientX - cx;
+    targetY = e.clientY - cy;
+  });
+
+  window.addEventListener('resize', function() {
+    cx = window.innerWidth / 2;
+    cy = window.innerHeight / 2;
+  });
+
+  function tick() {
+    // Lerp for smooth, organic lag behind the cursor
+    currentX += (targetX - currentX) * 0.06;
+    currentY += (targetY - currentY) * 0.06;
+
+    orbs.forEach(function(orb) {
+      var x = (currentX * orb.speedX).toFixed(2);
+      var y = (currentY * orb.speedY).toFixed(2);
+      orb.el.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    });
+
+    requestAnimationFrame(tick);
+  }
+
+  tick();
+})();
