@@ -876,15 +876,19 @@ window.addEventListener('load', function() {
 
   var lines = [
     "Hi, I'm Nandita.",
-    "I speak Python fluently. SQL occasionally.",
+    "Data Analyst at BP, by day.",
+    "Hi, I'm Nandita.",
+    "I turn messy data into clean answers.",
     "Hi, I'm Nandita.",
     "SELECT * FROM talent WHERE available = true;",
     "Hi, I'm Nandita.",
-    "Bug hunter. The bug wins sometimes.",
+    "Excel wizard, SQL whisperer, SAP survivor.",
     "Hi, I'm Nandita.",
-    "Making data tell better stories since 2019.",
+    "Making spreadsheets do things they didn't sign up for.",
     "Hi, I'm Nandita.",
-    "I turn chaotic spreadsheets into actual insights.",
+    "Currently learning Spanish. The data made me do it.",
+    "Hi, I'm Nandita.",
+    "Power BI dashboards that actually make sense.",
   ];
 
   var index = 0;
